@@ -2,6 +2,7 @@ package Shalsh.ChallengeBackend.Model;
 
 import javax.persistence.*;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -23,10 +24,10 @@ public class PedidoCabecera {
     private String telefono;
 
     @Column(name = "horario", nullable = false)
-    private Time horario;
+    private String horario;
 
     @Column(name = "fecha_alta", nullable = false)
-    private Date fecha_alta;
+    private LocalDate fecha_alta;
 
     @Column(name = "monto_total")
     private double monto_total;
@@ -72,19 +73,19 @@ public class PedidoCabecera {
         this.telefono = telefono;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
-    public Date getFecha_alta() {
+    public LocalDate getFecha_alta() {
         return fecha_alta;
     }
 
-    public void setFecha_alta(Date fecha_alta) {
+    public void setFecha_alta(LocalDate fecha_alta) {
         this.fecha_alta = fecha_alta;
     }
 

@@ -1,5 +1,7 @@
 package Shalsh.ChallengeBackend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class PedidoDetalle {
     private long id;
 
     @ManyToOne(fetch =  FetchType.LAZY, optional = false)
+    @JsonIgnore
     @JoinColumn(name="id_cabecera", foreignKey = @ForeignKey(name= "FK_cabecera",foreignKeyDefinition = "FOREIGN KEY (`id_cabecera`) REFERENCES `pedidos_cabecera` (`id`) ON DELETE CASCADE ON UPDATE CASCADE",value = ConstraintMode.CONSTRAINT))
     private PedidoCabecera pedido;
 
@@ -19,8 +22,14 @@ public class PedidoDetalle {
     @JoinColumn(name="id_producto", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_producto", foreignKeyDefinition = "FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE", value = ConstraintMode.CONSTRAINT))
     private Producto producto;
 
+    @Column(name = "nombre", nullable = false)
+    private String nombre_producto;
+
     @Column(name = "cantidad",nullable = false)
     private int cantidad;
+
+    @Column(name="precio_unitario", nullable = false)
+    private double precio_unitario;
 
     public long getId() {
         return id;
@@ -46,11 +55,27 @@ public class PedidoDetalle {
         this.producto = producto;
     }
 
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public double getPrecio_unitario() {
+        return precio_unitario;
+    }
+
+    public void setPrecio_unitario(double precio_unitario) {
+        this.precio_unitario = precio_unitario;
     }
 }

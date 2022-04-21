@@ -11,7 +11,7 @@ public class PedidoCabecera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)
-    private long id_cabecera;
+    private long id;
 
     @Column(name = "direccion", nullable = false, length = 150)
     private String direccion;
@@ -40,12 +40,12 @@ public class PedidoCabecera {
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<PedidoDetalle> detalle;
 
-    public long getId_cabecera() {
-        return id_cabecera;
+    public long getId() {
+        return id;
     }
 
-    public void setId_cabecera(long id_cabecera) {
-        this.id_cabecera = id_cabecera;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDireccion() {

@@ -1,18 +1,16 @@
 package Shalsh.ChallengeBackend.Model;
 
-import org.hibernate.annotations.GenericGenerator;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
 @Table(name="productos")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Producto {
 
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(unique = true, nullable = false, length = 50)
-    private String id_producto;
+    private String id;
 
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
@@ -21,17 +19,17 @@ public class Producto {
     private String descripcion_corta;
 
     @Column(name = "descripcion_larga", nullable = false, length = 200)
-    private String Descripcion_larga;
+    private String descripcion_larga;
 
     @Column(name = "precio_unitario", nullable = false)
     private double precio_unitario;
 
-    public String getId_producto() {
-        return id_producto;
+    public String getId() {
+        return id;
     }
 
-    public void setId_producto(String id_producto) {
-        this.id_producto = id_producto;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -51,11 +49,11 @@ public class Producto {
     }
 
     public String getDescripcion_larga() {
-        return Descripcion_larga;
+        return descripcion_larga;
     }
 
     public void setDescripcion_larga(String descripcion_larga) {
-        Descripcion_larga = descripcion_larga;
+        this.descripcion_larga = descripcion_larga;
     }
 
     public double getPrecio_unitario() {

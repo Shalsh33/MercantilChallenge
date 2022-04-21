@@ -9,29 +9,25 @@ public class PedidoDetalle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = false)
-    private long id_detalle;
+    private long id;
 
     @ManyToOne(fetch =  FetchType.LAZY, optional = false)
-    @JoinColumn(name="id_cabecera", foreignKey = @ForeignKey(name= "FK_cabecera",foreignKeyDefinition = "FOREIGN KEY (`id_cabecera`) REFERENCES `pedidos_cabecera` (`id_cabecera`)",value = ConstraintMode.CONSTRAINT))
+    @JoinColumn(name="id_cabecera", foreignKey = @ForeignKey(name= "FK_cabecera",foreignKeyDefinition = "FOREIGN KEY (`id_cabecera`) REFERENCES `pedidos_cabecera` (`id`) ON DELETE CASCADE ON UPDATE CASCADE",value = ConstraintMode.CONSTRAINT))
     private PedidoCabecera pedido;
 
     @ManyToOne(fetch =  FetchType.LAZY, optional = false)
-    @JoinColumns({
-            @JoinColumn(name="id_producto", referencedColumnName = "id_producto", foreignKey = @ForeignKey(name = "FK_producto", foreignKeyDefinition = "FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`)", value = ConstraintMode.CONSTRAINT)),
-            @JoinColumn(name = "nombre", referencedColumnName = "nombre"),
-            @JoinColumn(name = "precio_unitario", referencedColumnName = "precio_unitario")
-            })
+    @JoinColumn(name="id_producto", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_producto", foreignKeyDefinition = "FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE", value = ConstraintMode.CONSTRAINT))
     private Producto producto;
 
     @Column(name = "cantidad",nullable = false)
     private int cantidad;
 
-    public long getId_detalle() {
-        return id_detalle;
+    public long getId() {
+        return id;
     }
 
-    public void setId_detalle(long id_detalle) {
-        this.id_detalle = id_detalle;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public PedidoCabecera getPedido() {

@@ -11,6 +11,7 @@ class ChallengeBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

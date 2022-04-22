@@ -25,7 +25,7 @@ public class TestProductos {
 
         }
 
-        given().contentType("Application/JSON").body(req.toString()).when().post(URL).then().statusCode(201);
+        given().contentType("Application/JSON").body(req.toString()).when().post(URL).then().statusCode(201).log().body();
     }
 
     @Test
@@ -41,7 +41,7 @@ public class TestProductos {
 
         }
 
-        given().contentType("Application/JSON").body(req.toString()).when().post(URL).then().statusCode(201);
+        given().contentType("Application/JSON").body(req.toString()).when().post(URL).then().statusCode(201).log().body();
     }
 
     @Test
@@ -61,7 +61,7 @@ public class TestProductos {
 
     @Test
     public void obtenerProducto(){
-        given().get(URL+PATH).then().statusCode(200);
+        given().get(URL+PATH).then().statusCode(200).log().body();
     }
 
     @Test

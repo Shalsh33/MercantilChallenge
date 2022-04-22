@@ -56,7 +56,7 @@ public class PedidoService {
         int cant = 0; double total = 0;
         for(PedidoDetalle p:detalle){
             cant += p.getCantidad();
-            total += p.getCantidad() * p.getPrecio_unitario();
+            total += p.getPrecio();
         }
         boolean descuento = (cant >= CANT_DESCUENTO);
         pedido.setDescuento(descuento);
@@ -74,7 +74,7 @@ public class PedidoService {
             det.setPedido(pedido);
             det.setCantidad(r.getCantidad());
             det.setProducto(productosRepository.getOne(r.getProducto()));
-            det.setPrecio_unitario(det.getProducto().getPrecio_unitario());
+            det.setPrecio(det.getProducto().getPrecio_unitario()*det.getCantidad());
             det.setNombre_producto(det.getProducto().getNombre());
             detalle.add(det);
         }

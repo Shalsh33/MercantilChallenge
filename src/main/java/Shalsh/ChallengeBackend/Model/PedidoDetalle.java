@@ -19,6 +19,7 @@ public class PedidoDetalle {
     private PedidoCabecera pedido;
 
     @ManyToOne(fetch =  FetchType.LAZY, optional = false)
+    @JsonIgnore
     @JoinColumn(name="id_producto", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_producto", foreignKeyDefinition = "FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE", value = ConstraintMode.CONSTRAINT))
     private Producto producto;
 
@@ -28,8 +29,8 @@ public class PedidoDetalle {
     @Column(name = "cantidad",nullable = false)
     private int cantidad;
 
-    @Column(name="precio_unitario", nullable = false)
-    private double precio_unitario;
+    @Column(name="precio", nullable = false)
+    private double precio;
 
     public long getId() {
         return id;
@@ -71,11 +72,11 @@ public class PedidoDetalle {
         this.cantidad = cantidad;
     }
 
-    public double getPrecio_unitario() {
-        return precio_unitario;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setPrecio_unitario(double precio_unitario) {
-        this.precio_unitario = precio_unitario;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 }

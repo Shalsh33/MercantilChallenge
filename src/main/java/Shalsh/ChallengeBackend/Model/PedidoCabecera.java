@@ -1,7 +1,6 @@
 package Shalsh.ChallengeBackend.Model;
 
 import javax.persistence.*;
-import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
 

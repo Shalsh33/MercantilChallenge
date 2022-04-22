@@ -60,5 +60,9 @@ public class TestPedidos {
 
     }
 
+    @Test
+    public void listarPedidosPorFecha(){
+        given().get(URL+"?fecha=2022-04-22").then().statusCode(200).log().body();
+    }
 
 }

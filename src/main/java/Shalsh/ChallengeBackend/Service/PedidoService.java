@@ -82,4 +82,11 @@ public class PedidoService {
     }
 
 
+    public List<PedidoCabecera> getAllByFecha(String fecha) {
+        try{
+            return cabeceraRepository.getAllByFecha(fecha);
+        } catch (Exception e){
+            return null;
+        }
+    }
 }

@@ -40,7 +40,7 @@ public class ProductosController {
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable("id") String id, @RequestBody @NotNull Producto producto){
         try{
-            Object p = productoService.getOne(id);
+            Producto p = productoService.getOne(id);
             if (p != null){
                 producto.setId(id);
                 productoService.insert(producto);
@@ -69,7 +69,7 @@ public class ProductosController {
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable("id") String id){
         try{
-            Object response = productoService.getOne(id);
+            Producto response = productoService.getOne(id);
             if (response != null)
                 return new ResponseEntity<>(response,HttpStatus.OK);
             else

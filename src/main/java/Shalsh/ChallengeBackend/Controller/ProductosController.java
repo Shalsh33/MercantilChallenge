@@ -43,9 +43,10 @@ public class ProductosController {
             Object p = productoService.getOne(id);
             if (p != null){
                 producto.setId(id);
-                return new ResponseEntity<>(productoService.insert(producto),HttpStatus.CREATED);
+                productoService.insert(producto);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             } else {
-                return new ResponseEntity<>(p,HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -56,7 +57,7 @@ public class ProductosController {
     public ResponseEntity delete(@PathVariable("id") String id){
         try{
             if(productoService.delete(id)){
-                return new ResponseEntity<>(HttpStatus.OK);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             } else{
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
